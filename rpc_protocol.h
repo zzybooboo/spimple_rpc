@@ -23,11 +23,11 @@ rep    ack   data len         data
 #define  REQUST_BASIC_LEN    7
 typedef struct rpc_server_protocol_
 {
-	char		   basic_len[8];
-	unsigned int   recvd;
+	char		   basic_len[REQUST_BASIC_LEN];
 	char           status;
-	unsigned char  fn_len;
 	rpc_request_t  req;
+	unsigned int   recvd;
+	unsigned char  fn_len;
 }*rpc_server_protocol_t;
 
 #define  SET_STATUS(proto, offset) do{ proto->status = proto->status | (1 << offset);}while(0)
